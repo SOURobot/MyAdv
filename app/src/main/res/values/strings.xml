@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Like-Minded</string>
+
+<!--LoginActivity-->
+    <string name="authorisation">Authorisation</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register">Register</string>
+
+<!--MainActivity-->
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">HORIZONS</string>
+    <string name="tab_text_2">STAFF</string>
+    <string name="refresh">refresh</string>
+    <string name="create">create</string>
+    <string name="exit">exit</string>
+    <string name="comprehensive_info">Comprehensive info</string>
+    <string name="catchy_header">Catchy header</string>
+    <string name="new_announcement">New announcement</string>
+    <string name="publish">Publish</string>
+    <string name="close">Close</string>
+    <string name="contact">Contact (phone/email etc.)</string>
+</resources>

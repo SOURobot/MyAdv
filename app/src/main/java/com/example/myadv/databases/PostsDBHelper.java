@@ -2,6 +2,7 @@ package com.example.myadv.databases;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -58,5 +59,28 @@ public class PostsDBHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_POSTS, null, values);
         db.close();
         return result;
+    }
+
+    public Cursor getUserPosts(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {
+                COLUMN_ID,
+                COLUMN_HEADER,
+                COLUMN_CATEGORY,
+                COLUMN_DATE,
+                COLUMN_USERNAME,
+                COLUMN_INFO,
+                COLUMN_CONTACT
+        };
+
+        return db.query(
+                TABLE_POSTS,
+                columns,
+                COLUMN_USERNAME + " = ?",
+                new String[]{username},
+                null,
+                null,
+                COLUMN_DATE + " DESC"
+        );
     }
 }

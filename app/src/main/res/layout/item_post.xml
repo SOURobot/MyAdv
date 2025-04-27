@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100sp"
+    android:background="@drawable/item_post_background"
+    android:layout_marginLeft="20sp"
+    android:layout_marginRight="20sp"
+    android:layout_marginTop="10sp"
+    android:layout_marginBottom="10sp">
+
+    <TextView
+        android:id="@+id/textItemHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="10sp"
+
+        android:textSize="30sp"
+        android:textColor="@color/item_border"
+        android:textAllCaps="true"/>
+
+    <TextView
+        android:id="@+id/textItemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="70sp"
+
+        android:textSize="20sp"
+        android:textColor="@color/item_border"/>
+
+    <View
+        android:id="@+id/viewCategory"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="35sp"
+        android:layout_marginTop="25sp" />
+
+</RelativeLayout>

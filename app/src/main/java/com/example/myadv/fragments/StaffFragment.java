@@ -39,7 +39,7 @@ public class StaffFragment extends Fragment {
     }
 
     private void loadUserPosts() {
-        binding.scrollStaff.removeAllViews();
+        binding.postsHolder.removeAllViews();
         String username = usernameProvider.getUsername();
 
         dbHelper = new PostsDBHelper(requireContext());
@@ -60,7 +60,7 @@ public class StaffFragment extends Fragment {
                 PostItem postView = new PostItem(getContext());
                 postView.setPost(post, getParentFragmentManager());
 
-                binding.scrollStaff.addView(postView);
+                binding.postsHolder.addView(postView);
             } while (cursor.moveToNext());
         }
         cursor.close();

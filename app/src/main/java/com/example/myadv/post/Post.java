@@ -1,15 +1,17 @@
 package com.example.myadv.post;
 
-public class Post {
-    private int id;
-    private String username;
-    private String date;
-    private String header;
-    private String info;
-    private String contact;
-    private String category;
+import java.io.Serializable;
 
-    public Post(int id, String username, String date, String header, String info, String contact, String category) {
+public class Post implements Serializable {
+    private final int id;
+    private final String username;
+    private final String date;
+    private final String header;
+    private final String info;
+    private final String contact;
+    private final String category;
+
+    public Post (int id, String username, String date, String header, String info, String contact, String category) {
         this.id = id;
         this.username = username;
         this.date = date;

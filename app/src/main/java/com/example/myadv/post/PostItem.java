@@ -7,7 +7,6 @@ import android.widget.RelativeLayout;
 
 import androidx.fragment.app.FragmentManager;
 
-import com.example.myadv.R;
 import com.example.myadv.databinding.ItemPostBinding;
 
 public class PostItem extends RelativeLayout {
@@ -27,7 +26,7 @@ public class PostItem extends RelativeLayout {
     }
 
     private void init(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.item_post, this, true);
+        binding = ItemPostBinding.inflate(LayoutInflater.from(context), this, true);
         setOnClickListener(v -> showPostDetails());
     }
 

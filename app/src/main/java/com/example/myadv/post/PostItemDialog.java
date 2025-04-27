@@ -14,8 +14,6 @@ import androidx.fragment.app.DialogFragment;
 import com.example.myadv.R;
 import com.example.myadv.databinding.ItemPostDetailsBinding;
 
-import java.io.Serializable;
-
 public class PostItemDialog extends DialogFragment {
     private static final String ARG_POST = "post";
     private ItemPostDetailsBinding binding;
@@ -23,7 +21,7 @@ public class PostItemDialog extends DialogFragment {
     public static PostItemDialog newInstance(Post post) {
         PostItemDialog fragment = new PostItemDialog();
         Bundle args = new Bundle();
-        args.putSerializable(ARG_POST, (Serializable) post);
+        args.putSerializable(ARG_POST, post);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,6 +52,7 @@ public class PostItemDialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        assert getArguments() != null;
         Post post = (Post) getArguments().getSerializable(ARG_POST);
 
         assert post != null;

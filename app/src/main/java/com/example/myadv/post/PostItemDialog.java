@@ -56,7 +56,7 @@ public class PostItemDialog extends DialogFragment {
         Post post = (Post) getArguments().getSerializable(ARG_POST);
 
         assert post != null;
-        binding.textDetailHeader.setText(post.getUsername());
+        binding.textDetailHeader.setText(post.getHeader());
         binding.textDetailUsername.setText(post.getUsername());
         binding.textDetailDate.setText(post.getDate());
         binding.textDetailInfo.setText(post.getInfo());

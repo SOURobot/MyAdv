@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:id="@+id/horizons_all"
+        android:id="@+id/scrollAll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:id="@+id/content_container"
+            android:id="@+id/postsHolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"/>

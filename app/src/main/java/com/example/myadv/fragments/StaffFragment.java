@@ -72,6 +72,7 @@ public class StaffFragment extends Fragment {
         loadUserPosts();
 
         binding.fabCreate.setOnClickListener(v -> showCustomDialog());
+        binding.fabRefresh.setOnClickListener(v -> loadUserPosts());
     }
 
     private void showCustomDialog() {

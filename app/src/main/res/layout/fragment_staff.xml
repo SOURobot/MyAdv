@@ -34,4 +34,15 @@
         android:backgroundTint="@color/horizon_light"
         android:contentDescription="@string/create" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/refresh_icon"
+        android:backgroundTint="@color/horizon_light"
+        android:contentDescription="@string/refresh" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

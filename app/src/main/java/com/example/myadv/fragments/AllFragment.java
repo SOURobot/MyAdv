@@ -72,6 +72,15 @@ public class AllFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDestroyView() {
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
+        binding = null;
+        super.onDestroyView();
+    }
+
     public interface UsernameProvider {
         String getUsername();
     }

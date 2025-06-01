@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,49 +21,66 @@
             android:padding="8dp">
 
             <TextView
+                android:id="@+id/textDetailDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+
+                android:layout_marginBottom="7sp"/>
+
+            <TextView
                 android:id="@+id/textDetailHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:textColor="@color/item_border"
+                android:textColor="@color/horizon_main"
                 android:textStyle="bold"
+
                 android:layout_marginBottom="10sp"/>
 
-            <TextView
-                android:id="@+id/textDetailUsername"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30sp"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="25sp">
 
-            <TextView
-                android:id="@+id/textDetailCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="#6200EE"
-                android:layout_marginBottom="10sp"/>
+                <TextView
+                    android:id="@+id/textDetailUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/textDetailCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#6200EE"/>
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textDetailInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+
+                android:layout_marginBottom="25sp"/>
 
             <TextView
                 android:id="@+id/textDetailContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="#6200EE"
                 android:layout_marginBottom="10sp"/>
-
-            <TextView
-                android:id="@+id/textDetailDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"/>
 
             <Button
                 android:id="@+id/buttonClose"

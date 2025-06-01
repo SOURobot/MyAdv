@@ -2,23 +2,44 @@
     <string name="app_name">Like-Minded</string>
 
 <!--LoginActivity-->
-    <string name="authorisation">Authorisation</string>
-    <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign in</string>
-    <string name="register">Register</string>
+    <string name="authorisation">Авторизация</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Вход</string>
+    <string name="register">Регистрация</string>
+
+    <string name="empty_fields">Пожалуйста, заполните все поля</string>
+    <string name="bad_input">Неверные данные</string>
+    <string name="user_exists">Данный пользователь уже существует</string>
+    <string name="registration_success">Данные успешно сохранены</string>
+    <string name="save_error">Ошибка при сохранении данных</string>
+    <string name="weak_password">Пароль должен содержать минимум 6 символов</string>
+    <string name="invalid_login">Логин может содержать только буквы, цифры и _</string>
 
 <!--MainActivity-->
     <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_1">HORIZONS</string>
-    <string name="tab_text_2">STAFF</string>
+    <string name="tab_text_1">Объявления</string>
+    <string name="tab_text_2">Мое</string>
     <string name="refresh">refresh</string>
     <string name="create">create</string>
     <string name="exit">exit</string>
-    <string name="comprehensive_info">Comprehensive info</string>
-    <string name="catchy_header">Catchy header</string>
-    <string name="new_announcement">New announcement</string>
-    <string name="publish">Publish</string>
-    <string name="close">Close</string>
-    <string name="contact">Contact (phone/email etc.)</string>
+
+<!--CreateFragment-->
+    <string name="new_announcement">Новое объявление</string>
+    <string name="catchy_header">Заголовок</string>
+    <string name="comprehensive_info">Полная информация</string>
+    <string name="contact">Контакт (телефон / эл. почта / т.д.)</string>
+    <string name="publish">Опубликовать</string>
+    <string name="close">Закрыть</string>
+
+    <string name="select_category">Выберите категорию</string>
+    <string name="post_published">Объявление опубликовано</string>
+
+    <string-array name="post_categories">
+        <item>Выберите категорию</item>
+        <item>Официальное</item>
+        <item>Событие</item>
+        <item>Хобби</item>
+        <item>Другое</item>
+    </string-array>
 </resources>

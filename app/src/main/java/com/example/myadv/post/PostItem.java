@@ -37,17 +37,21 @@ public class PostItem extends RelativeLayout {
         binding.textItemDate.setText(post.getDate());
         String category = post.getCategory();
         switch (category) {
-            case "Official":
-                binding.viewCategory.setBackgroundColor(0x1560BD);
+            case "Официальное":
+                binding.viewCategory.setBackgroundColor(0xFF1560BD);
+                binding.viewCategory.invalidate();
                 break;
-            case "Events":
-                binding.viewCategory.setBackgroundColor(0xF80000);
+            case "Событие":
+                binding.viewCategory.setBackgroundColor(0xFFF80000);
+                binding.viewCategory.invalidate();
                 break;
-            case "Hobbies":
-                binding.viewCategory.setBackgroundColor(0xFFC600);
+            case "Хобби":
+                binding.viewCategory.setBackgroundColor(0xFFFFC600);
+                binding.viewCategory.invalidate();
                 break;
             default:
-                binding.viewCategory.setBackgroundColor(0x228B22);
+                binding.viewCategory.setBackgroundColor(0xFF228B22);
+                binding.viewCategory.invalidate();
                 break;
         }
     }

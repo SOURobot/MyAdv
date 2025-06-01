@@ -21,6 +21,7 @@ import com.example.myadv.databinding.FragmentCreateBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CreateFragment extends DialogFragment {
@@ -54,7 +55,7 @@ public class CreateFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentCreateBinding.inflate(getLayoutInflater(), container, false);
 
-        String[] items = {"<Choose the category>", "Official", "Events", "Hobbies", "Other"};
+        String[] items = getResources().getStringArray(R.array.post_categories);;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_spinner_dropdown_item, items);
         binding.spinnerCategory.setAdapter(adapter);
@@ -70,31 +71,41 @@ public class CreateFragment extends DialogFragment {
         helper = new PostsDBHelper(requireContext());
 
         binding.buttonPublish.setOnClickListener(v -> publishPost());
-
         binding.buttonClose.setOnClickListener(v -> dismiss());
     }
 
     protected void publishPost() {
         String username = usernameProvider.getUsername();
-        @SuppressLint("SimpleDateFormat") String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        @SuppressLint("SimpleDateFormat") String date = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
         String header = binding.textHeader.getText().toString().trim();
         String info = binding.textInfo.getText().toString().trim();
         String contact = binding.textContact.getText().toString().trim();
         String category = binding.spinnerCategory.getSelectedItem().toString().trim();
 
-        if (username.isEmpty() || header.isEmpty() || info.isEmpty() || contact.isEmpty() || category.equals("<Choose the category>")) {
-            Toast.makeText(requireContext(), "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show();
+        if (checkFields()) {
+            showToast(R.string.empty_fields);
             return;
         }
 
         long result = helper.addPost(username, date, header, info, contact, category);
 
         if (result != -1) {
-            Toast.makeText(requireContext(), "Объявление опубликованно", Toast.LENGTH_SHORT).show();
+            showToast(R.string.post_published);
             clearFields();
         } else {
-            Toast.makeText(requireContext(), "Ошибка при сохранении данных", Toast.LENGTH_SHORT).show();
+            showToast(R.string.save_error);
         }
+    }
+
+    private boolean checkFields() {
+        return binding.textHeader.getText().toString().trim().isEmpty() ||
+                binding.textInfo.getText().toString().trim().isEmpty() ||
+                binding.textContact.getText().toString().trim().isEmpty() ||
+                binding.spinnerCategory.getSelectedItem().toString().equals("Выберите категорию");
+    }
+
+    private void showToast(int message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     private void clearFields() {
@@ -114,5 +125,14 @@ public class CreateFragment extends DialogFragment {
             Objects.requireNonNull(dialog.getWindow()).setLayout(width, height);
             dialog.getWindow().setGravity(Gravity.CENTER);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (helper != null) {
+            helper.close();
+        }
+        binding = null;
+        super.onDestroyView();
     }
 }

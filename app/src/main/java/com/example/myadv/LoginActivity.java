@@ -31,21 +31,14 @@ public class LoginActivity extends AppCompatActivity {
         String login = binding.textLogin.getText().toString().trim();
         String password = binding.textPassword.getText().toString().trim();
 
-        if (login.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show();
+        if (!checkFields(login, password)){
             return;
         }
 
-        boolean pairValid = helper.checkUser(login, password);
-
-        if (pairValid) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("Login", login);
-            intent.putExtra("Password", password);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+        if (helper.checkUser(login, password)) {
+            startApp(login);
         } else {
-            Toast.makeText(this, "Неверные данные", Toast.LENGTH_SHORT).show();
+            showToast(R.string.bad_input);
         }
     }
 
@@ -53,24 +46,55 @@ public class LoginActivity extends AppCompatActivity {
         String login = binding.textLogin.getText().toString().trim();
         String password = binding.textPassword.getText().toString().trim();
 
-        if (login.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show();
+        if (!checkFields(login, password)){
+            return;
+        }
+        if (!checkLogin(login)){
+            return;
+        }
+        if (!checkPassword(password)){
             return;
         }
 
         if (helper.ifUserExists(login)) {
-            Toast.makeText(this, "Данный пользователь уже существует", Toast.LENGTH_SHORT).show();
+            showToast(R.string.user_exists);
             return;
         }
 
         long result = helper.addUser(login, password);
-
         if (result != -1) {
-            Toast.makeText(this, "Данные успешно сохранены", Toast.LENGTH_SHORT).show();
+            showToast(R.string.registration_success);
             clearFields();
         } else {
-            Toast.makeText(this, "Ошибка при сохранении данных", Toast.LENGTH_SHORT).show();
+            showToast(R.string.save_error);
         }
+    }
+
+    private boolean checkFields(String login, String password) {
+        if (login.isEmpty() || password.isEmpty()) {
+            showToast(R.string.empty_fields);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkLogin(String login) {
+        return login.matches("[a-zA-Z0-9_]+");
+    }
+
+    private boolean checkPassword(String password) {
+        return password.length() >= 6;
+    }
+
+    private void startApp(String login) {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("Login", login);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void showToast(int message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void clearFields() {

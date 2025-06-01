@@ -63,38 +63,29 @@ public class PostsDBHelper extends SQLiteOpenHelper {
 
     public Cursor getUserPosts(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {
-                COLUMN_ID,
-                COLUMN_HEADER,
-                COLUMN_CATEGORY,
-                COLUMN_DATE,
-                COLUMN_USERNAME,
-                COLUMN_INFO,
-                COLUMN_CONTACT
-        };
-
         return db.query(
                 TABLE_POSTS,
-                columns,
+                new String[]{COLUMN_ID, COLUMN_USERNAME, COLUMN_DATE, COLUMN_HEADER,
+                        COLUMN_INFO, COLUMN_CONTACT, COLUMN_CATEGORY},
                 COLUMN_USERNAME + " = ?",
                 new String[]{username},
                 null,
                 null,
-                COLUMN_DATE + " DESC"
+                COLUMN_DATE
         );
     }
 
     public Cursor getAllPosts() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_POSTS,
-                new String[]{COLUMN_ID,
-                        COLUMN_HEADER,
-                        COLUMN_CATEGORY,
-                        COLUMN_DATE,
-                        COLUMN_USERNAME,
-                        COLUMN_INFO,
-                        COLUMN_CONTACT},
-                null, null, null, null,
-                COLUMN_DATE + " DESC");
+        return db.query(
+                TABLE_POSTS,
+                new String[]{COLUMN_ID, COLUMN_USERNAME, COLUMN_DATE, COLUMN_HEADER,
+                        COLUMN_INFO, COLUMN_CONTACT, COLUMN_CATEGORY},
+                null,
+                null,
+                null,
+                null,
+                COLUMN_DATE
+        );
     }
 }

@@ -34,16 +34,22 @@ public class MainActivity extends AppCompatActivity implements StaffFragment.Use
         Intent intent = getIntent();
         username = intent.getStringExtra("Login");
 
+        formatName();
+
+        binding.fabLogout.setOnClickListener(v -> logout());
+    }
+
+    private void formatName() {
         if (!isEmpty(username) && username.length() >= 20) {
-            username = username.substring(0, 8) + "...";
+            username = username.substring(0, 10) + "...";
         }
         binding.textUsername.setText(username);
+    }
 
-        binding.fabLogout.setOnClickListener(v -> {
-            Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
-            intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent1);
-        });
+    private void logout() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override

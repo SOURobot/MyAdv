@@ -57,7 +57,7 @@ public class PostItemDialog extends DialogFragment {
 
         assert post != null;
         binding.textDetailHeader.setText(post.getHeader());
-        binding.textDetailUsername.setText(post.getUsername());
+        binding.textDetailUsername.setText("by "+ post.getUsername());
         binding.textDetailDate.setText(post.getDate());
         binding.textDetailInfo.setText(post.getInfo());
         binding.textDetailContact.setText(post.getContact());
